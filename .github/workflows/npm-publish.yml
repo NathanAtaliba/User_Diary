@@ -1,33 +1,52 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: Node.js Package
+name: CI
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: 
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm ci
-      - run: npm test
+    - name: Chekout do código
+      uses: actions/checkout@v2
 
-  publish-npm:
-    needs: build
+    - name: Configurar Node.js
+      uses: actions/setup-node@v2
+      with:
+          node-version: '20.x'
+          
+    - name: Instalar Dependencias
+      run: npm install
+  
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+    - name: Chekout do código
+      uses: actions/checkout@v2
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v2
+      with:
+          node-version: '20.x'
+
+    - name: Instalar Dependencias
+      run: npm install
+
+    - name: Executar Testes
+      run: npm test
+
+    - name: Instalar http-server
+      run: npm install -g http-server
+
+    - name: Iniciar http-server
+      run: http-server -p 3000 -d false &
+
+    - name: Esperar pelo http-server
+      run: sleep 5
+
+    - name: Executar Testes Cypress
+      run: npx cypress run --config baseUrl=http://localhost:3000
