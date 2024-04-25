@@ -39,7 +39,6 @@ async function loginUser( req, res ){
 
         if (user) {
             const validPassword = await bcrypt.compare(password, user.password);
-            console.log(validPassword)
             if (validPassword) {               
                 return res.status(200).send('Login successful!');
             } else {
