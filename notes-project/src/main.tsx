@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
 import { LoginPage } from './pages/LoginPage';
 import { Toaster } from 'sonner';
 import { SignupForm }  from './pages/SignupForm';

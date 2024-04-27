@@ -15,7 +15,7 @@ async function getUser( req, res ){
 
 async function createUser(req, res) {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, password, confirmPassword } = req.body;
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -23,6 +23,7 @@ async function createUser(req, res) {
             username: username,
             email: email,
             password: hashedPassword, 
+            confirmPassword: confirmPassword,
         };
         await User.create(newUser);
         return res.status(201).send('User created with sucess!');
