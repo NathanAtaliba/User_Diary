@@ -16,7 +16,7 @@ const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
 
     if(response.data === 'Login successful!'){
       window.alert(response.data);
-    window.location.href = '/loged/';
+      window.location.href = '/loged/';
     }else{
       window.alert(response.data);
     }
@@ -29,9 +29,6 @@ const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
   return (
     <>
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-repeat w-full h-screen justify-center flex items-center">
-      <div className="bg-white md:w-48 md:h-1/2 rounded-md">
-
-      </div>
       <form onSubmit={handleSubmit} className="flex flex-col bg-slate-900/85 md:w-1/4 md:h-1/2 text-white text-center justify-center content-center rounded-md box-border font-bold text-base items-center">
         <label htmlFor="email">Email:</label>
         <input className="bg-transparent text-center border-2 border-solid border-slate-500 rounded-md outline-green-400 p-2 md:w-1/2 placeholder:text-slate-300 m-1" 

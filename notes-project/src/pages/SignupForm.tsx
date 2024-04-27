@@ -12,30 +12,38 @@ export function SignupForm() {
 const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
   event.preventDefault();
   try {
-    const response = await axios.post('http://localhost:3000/user/register', {
-      username: username,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword
-    });
-
-    if(response.data === 'Login successful!'){
-      window.alert(response.data);
-    }else{
-      window.alert(response.data);
+    if(password === confirmPassword){
+      const response = await axios.post('http://localhost:3000/user/register', {
+        username: username,
+        email: email,
+        password: password,
+      });
+      if(response.data === 'User created with successful!'){
+        window.alert(response.data);
+        setUsername("")
+        setEmail("")
+        setPassword("")
+        setconfirmPassword("")
+      }else{
+        window.alert(response.data);
+      }
+      }
+      else{
+        window.alert("Password and password confirmation are not the same")
+        setUsername("")
+        setEmail("")
+        setPassword("")
+        setconfirmPassword("")
+      }
     }
+    catch(error){
+      window.alert('Erro ao realizar login:'+ error);
     }
-  catch(error){
-    window.alert('Erro ao realizar login:'+ error);
-  }
 };
 
     return(
         <>
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-repeat w-full h-screen justify-center flex items-center">
-      <div className="bg-white md:w-48 md:h-1/2 rounded-md">
-
-      </div>
       <form onSubmit={handleSubmit} className="flex flex-col bg-slate-900/85 md:w-1/4 md:h-1/2 text-white text-center justify-center content-center rounded-md box-border font-bold text-base items-center">
       <label htmlFor="username">Username:</label>
         <input className="bg-transparent text-center border-2 border-solid border-slate-500 rounded-md outline-green-400 p-2 md:w-1/2 placeholder:text-slate-300 m-1" 
