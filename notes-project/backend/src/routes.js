@@ -11,10 +11,10 @@ routes.delete('/user/delete/:id', userDelete);
 routes.put('/user/edit/:id', userEdit);
 
 //Routes for notes
-routes.get('/notes/:id', getNotes); 
-routes.delete('/note/:id', deleteNote);
-routes.post('/note/', createNote);
-routes.put('/note/:id', updateNote);
+routes.get('/notes/search/:id_user', getNotes); 
+routes.delete('/note/delete/:id', deleteNote);
+routes.post('/note/create', createNote);
+routes.put('/note/update/:id', updateNote);
 
 
 
