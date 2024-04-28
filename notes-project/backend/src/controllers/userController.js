@@ -25,7 +25,7 @@ async function createUser(req, res) {
             password: hashedPassword, 
         };
         await User.create(newUser);
-        return res.status(201).send('User created with sucess!');
+        return res.status(201).send('User created with successfully!');
     } catch (err) {
         console.error(err);
         return res.status(500).send('Erro ao criar usuário');
@@ -40,7 +40,7 @@ async function loginUser( req, res ){
         if (user) {
             const validPassword = await bcrypt.compare(password, user.password);
             if (validPassword) {               
-                return res.status(200).send('Login successful!');
+                return res.status(200).json({"user_id":user._id,"username": user.username});
             } else {
                 return res.status(401).send('Wrong email or password');
             }

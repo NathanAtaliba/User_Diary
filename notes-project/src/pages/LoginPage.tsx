@@ -13,9 +13,14 @@ const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
       email: email,
       password: password
     });
+    
+    const id = response.data.user_id;
+    const username = response.data.username;
 
-    if(response.data === 'Login successful!'){
-      window.alert(response.data);
+    if(response.data.user_id && response.data.username){
+      window.alert("Login sucessfully");
+      localStorage.setItem('id_user', id);
+      localStorage.setItem('username', username);
       window.location.href = '/loged/';
     }else{
       window.alert(response.data);

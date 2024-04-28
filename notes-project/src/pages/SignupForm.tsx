@@ -18,7 +18,7 @@ const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
         email: email,
         password: password,
       });
-      if(response.data === 'User created with successful!'){
+      if(response.data === 'User created with successfully!'){
         window.alert(response.data);
         setUsername("")
         setEmail("")
@@ -42,16 +42,16 @@ const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
 };
 
     return(
-        <>
-    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-repeat w-full h-screen justify-center flex items-center">
-      <form onSubmit={handleSubmit} className="flex flex-col bg-slate-900/85 md:w-1/4 md:h-1/2 text-white text-center justify-center content-center rounded-md box-border font-bold text-base items-center">
-      <label htmlFor="username">Username:</label>
-        <input className="bg-transparent text-center border-2 border-solid border-slate-500 rounded-md outline-green-400 p-2 md:w-1/2 placeholder:text-slate-300 m-1" 
-        type="text" 
-        placeholder="Enter with your username"
-        id="username"
-        value={username}
-        onChange={(e)=>
+      <>
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-repeat w-full h-screen justify-center flex items-center">
+        <form onSubmit={handleSubmit} className="flex flex-col bg-slate-900/85 md:w-1/4 md:h-1/2 text-white text-center justify-center content-center rounded-md box-border font-bold text-base items-center">
+        <label htmlFor="username">Username:</label>
+          <input className="bg-transparent text-center border-2 border-solid border-slate-500 rounded-md outline-green-400 p-2 md:w-1/2 placeholder:text-slate-300 m-1" 
+          type="text" 
+          placeholder="Enter with your username"
+          id="username"
+          value={username}
+          onChange={(e)=>
           setUsername(e.target.value)} 
         />
 

@@ -4,7 +4,7 @@ async function createNote( req, res ){
     try{
     const new_Note = req.body;
     await noteModel.create(new_Note);
-    return res.status(201).send('Note create successfully');
+    return res.status(201).send('Note created with success!');
     }catch(error){
         return res.status(404).send('Error creating note: '+ error);
     }
