@@ -1,11 +1,33 @@
-import Note from "../components/Note";
+import ListNotes from "../components/ListNotes";
 import { useState } from "react";
 import axios from "axios";
+import Note from "../components/Note";
 export function LogedPage() {
 
+    interface NoteItemProps {
+        note: {
+            _id: string,
+            id_user: string,
+            text: string,
+            title: string,
+            date: Date,
+        };
+        onRemove: (noteId: string) => Promise<void>; // Atualizado para incluir um argumento noteId
+        onSelect: (noteId: string) => void;
+        onFocus: () => void;
+        selected: boolean;
+    }
+
+    const [selectedChatId, setSelectedChatId] = useState<string | null>(null);
     const [title, setTitle] = useState('');
     const id_user = localStorage.getItem('id_user');
     const username = localStorage.getItem('username');
+
+    const handleNoteSelect = (noteId: string) => {
+        setSelectedChatId(noteId);
+      };
+
+
     const handleClick = async ()=>{
         try {
             const response = await axios.post('http://localhost:3000/note/create', {
@@ -25,6 +47,7 @@ export function LogedPage() {
         }
     };
 
+    
 return(
 <>
 <div className="bg-slate-900 w-full h-screen justify-center flex items-center relative">
@@ -41,9 +64,9 @@ return(
             <button className="bg-green-400 absolute right-0 m-2 p-8 rounded-full text-center hover:bg-green-600 text-white" 
             onClick={handleClick}>Add note</button>
         </div>
-        <div className="bg-slate-600 m-2 my-5 relative rounded-md h-4/6 overflow-y-scroll">
-            <Note></Note>
-        </div>
+
+        <ListNotes onSelectNote={handleNoteSelect}/>
+            
     </div>
 </div>
 </>

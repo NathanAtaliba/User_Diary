@@ -14,6 +14,7 @@ async function getNotes( req, res ){
     try {
         const id_user = req.params.id_user;
         const response = await noteModel.find({id_user:id_user});
+        console.log('get')
         return res.status(200).send(response);
     } catch (error) {
         return res.status(404).send('Error: '+ error);
