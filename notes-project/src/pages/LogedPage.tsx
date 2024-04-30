@@ -1,27 +1,22 @@
 import ListNotes from "../components/ListNotes";
 import { useState } from "react";
 import axios from "axios";
-import Note from "../components/Note";
-export function LogedPage() {
+import Swal from 'sweetalert2';
 
-    interface NoteItemProps {
-        note: {
-            _id: string,
-            id_user: string,
-            text: string,
-            title: string,
-            date: Date,
-        };
-        onRemove: (noteId: string) => Promise<void>; // Atualizado para incluir um argumento noteId
-        onSelect: (noteId: string) => void;
-        onFocus: () => void;
-        selected: boolean;
-    }
+export function LogedPage() {
 
     const [selectedChatId, setSelectedChatId] = useState<string | null>(null);
     const [title, setTitle] = useState('');
     const id_user = localStorage.getItem('id_user');
     const username = localStorage.getItem('username');
+
+    function mensagem( title: string, icon: 'warning' | 'error' | 'success' | 'info' | 'question' ){
+        Swal.fire({
+            title: title,
+            icon: icon,
+            confirmButtonText: 'Ok'
+          });
+    }
 
     const handleNoteSelect = (noteId: string) => {
         setSelectedChatId(noteId);
@@ -36,14 +31,16 @@ export function LogedPage() {
                 text: " ",
             });
             if(response.data === 'Note created with success!'){
-                window.alert("Note created with success!")
+                mensagem(`Note created with success! Title: ${title}`,'success')
                 setTitle("");
             }else{
-
+                mensagem(`Resposta do servidor: ${response.data}`,'error')
+                setTitle("");
             }
-            console.log('Resposta do servidor:', response.data);
+
         } catch (error) {
-            console.error('Erro ao enviar dados:', error);
+            mensagem(`Erro ao enviar dados: ${error}`,'error')
+            console.error(`Erro ao enviar dados:`, error);
         }
     };
 

@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 export function LoginPage() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  function mensagem( title: string, icon: 'warning' | 'error' | 'success' | 'info' | 'question' ){
+    Swal.fire({
+        title: title,
+        icon: icon,
+        confirmButtonText: 'Ok'
+      });
+}
 
 const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
   event.preventDefault();
@@ -18,16 +28,16 @@ const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
     const username = response.data.username;
 
     if(response.data.user_id && response.data.username){
-      window.alert("Login sucessfully");
+      mensagem(`Login sucessfully ${username}`,'success')
       localStorage.setItem('id_user', id);
       localStorage.setItem('username', username);
       window.location.href = '/loged/';
     }else{
-      window.alert(response.data);
+      mensagem(`Error: ${response.data}`,'error')
     }
     }
   catch(error){
-    window.alert('Erro ao realizar login:'+ error);
+    mensagem(`Erro ao realizar login: ${error}`,'error')
   }
 };
 

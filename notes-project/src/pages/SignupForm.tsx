@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export function SignupForm() {
 
@@ -8,6 +9,14 @@ export function SignupForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setconfirmPassword] = useState('');
+
+    function mensagem( title: string, icon: 'warning' | 'error' | 'success' | 'info' | 'question' ){
+      Swal.fire({
+          title: title,
+          icon: icon,
+          confirmButtonText: 'Ok'
+        });
+  }
 
 const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
   event.preventDefault();
@@ -19,17 +28,17 @@ const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
         password: password,
       });
       if(response.data === 'User created with successfully!'){
-        window.alert(response.data);
+        mensagem(`User created with successfully! Username: ${username}`, 'success')
         setUsername("")
         setEmail("")
         setPassword("")
         setconfirmPassword("")
       }else{
-        window.alert(response.data);
+        mensagem(`Fail to create user! ${response.data}`, 'error')
       }
       }
       else{
-        window.alert("Password and password confirmation are not the same")
+        mensagem(`Password and password confirmation are not the same`, 'warning')
         setUsername("")
         setEmail("")
         setPassword("")
@@ -37,7 +46,7 @@ const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
       }
     }
     catch(error){
-      window.alert('Erro ao realizar login:'+ error);
+      mensagem(`Erro ao realizar login: ${error}`, 'error')
     }
 };
 
