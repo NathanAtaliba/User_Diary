@@ -18,7 +18,10 @@ jobs:
       with:
           node-version: '20.x'
           
-    - name: Instalar Dependencias
+    - name: Mudar para a pasta notes-project
+      run: cd notes-project
+
+    - name: Instalar Dependências
       run: npm install
   
   test:
