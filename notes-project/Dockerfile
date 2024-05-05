@@ -1,14 +1,21 @@
 # define a imagem base
-FROM linux:latest
+# Especifica a imagem base do Node.js
+FROM node:20-alpine
 
-WORKDIR /backend
-# define o mantenedor da imagem
-LABEL maintainer="Macoratti"
-# Atualiza a imagem com os pacotes
-RUN apt-get update && apt-get upgrade -y
-# Instala o NGINX para testar
+# Define o diretório de trabalho dentro do container
+WORKDIR /usr/src/app
+
+# Copia os arquivos de dependências
+COPY package*.json ./
+
+# Instala as dependências
 RUN npm install
-# Expoe a porta 80
-EXPOSE 80
-# Comando para iniciar o NGINX no Container
-CMD ["npm", "start"]
+
+# Copia os arquivos restantes do projeto para o diretório de trabalho
+COPY . .
+
+# Expõe a porta que será usada pela aplicação
+EXPOSE 3000
+
+# Comando para executar a aplicação
+CMD ["node", "index.js"]
