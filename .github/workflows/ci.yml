@@ -22,7 +22,7 @@ jobs:
           node-version: '16.X'
       
     - name: navigate to notes-project
-      run: cd notes-project
+      run: cd notes_project
     
     - name: List current directory
       run: ls -l
