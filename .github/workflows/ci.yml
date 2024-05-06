@@ -23,13 +23,11 @@ jobs:
           # Se o diretório atual for diferente do esperado, ajuste o caminho
           
     - name: Navigate to notes-project directory
-      run: cd notes-project      
+      run: cd /home/runner/work/User_Diary/User_Diary/notes-project     
      
     - name: Debug current directory after navigation
       run: pwd  # Mostra o diretório atual após a navegação
            
-    - name: Mudar para a pasta notes-project
-      run: cd notes-project
 
     - name: Instalar Dependências
       run: npm install
