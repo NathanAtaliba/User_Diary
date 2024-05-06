@@ -17,18 +17,10 @@ jobs:
       uses: actions/setup-node@v2
       with:
           node-version: '16.X'
-    
-    - name: Debug current directory
-      run: pwd  # Mostra o diretório atual
-          # Se o diretório atual for diferente do esperado, ajuste o caminho
+      
+    - name: navigate to notes-project
+      run: cd /home/runner/work/User_Diary/notes-project
           
-    - name: Navigate to notes-project directory
-      run: cd notes-project   
-     
-    - name: Debug current directory after navigation
-      run: pwd  # Mostra o diretório atual após a navegação
-           
-
     - name: Instalar Dependências
       run: npm install
   
