@@ -21,9 +21,12 @@ jobs:
       with:
           node-version: '20.x'
       
-    - name: navigate to notes-project
+    - name: Navigate to notes_project directory
       run: cd notes_project
     
+    - name: Set permissions for notes_project directory
+      run: chmod -R 777 .
+      
     - name: List current directory
       run: ls -l
       
