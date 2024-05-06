@@ -22,8 +22,11 @@ jobs:
           node-version: '16.X'
       
     - name: navigate to notes-project
-      run: cd /home/runner/work/User_Diary/User_Diary/notes-project
-          
+      run: cd notes-project
+    
+    - name: List current directory
+      run: ls -l
+      
     - name: Instalar Dependências
       run: npm install
   
