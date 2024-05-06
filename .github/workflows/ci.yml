@@ -26,6 +26,9 @@ jobs:
     
     - name: Enter in notes_project
       run: cd notes_project
+    
+    - name: Limpar o cache do npm
+      run: npm cache clean --force  
       
     - name: Instalar Dependências
       run: npm install
