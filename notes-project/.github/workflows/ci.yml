@@ -23,7 +23,7 @@ jobs:
           # Se o diretório atual for diferente do esperado, ajuste o caminho
           
     - name: Navigate to notes-project directory
-      run: cd cd User_Diary/notes-project   
+      run: cd notes-project   
      
     - name: Debug current directory after navigation
       run: pwd  # Mostra o diretório atual após a navegação
