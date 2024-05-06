@@ -11,3 +11,5 @@ Repositorio para Projeto utilizando React
 
 ## Rotas de usuario:
 
+## CI/CD
+[![CI](https://github.com/NathanAtaliba/User_Diary/actions/workflows/ci.yml/badge.svg)](https://github.com/NathanAtaliba/User_Diary/actions/workflows/ci.yml)
