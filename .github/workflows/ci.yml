@@ -23,6 +23,9 @@ jobs:
           
     - name: List current directory
       run: ls -l
+    
+    - name: Enter in notes_project
+      run: cd notes_project
       
     - name: Instalar Dependências
       run: npm install
