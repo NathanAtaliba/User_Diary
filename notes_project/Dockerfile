@@ -3,7 +3,7 @@
 FROM node:20-alpine
 
 # Define o diretório de trabalho dentro do container
-WORKDIR /backend/src
+WORKDIR .
 
 # Copia os arquivos de dependências
 COPY package*.json ./
@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 3000
 
 # Comando para executar a aplicação
-CMD ["node", "index.js"]
+CMD ["npm", "run", "start"]

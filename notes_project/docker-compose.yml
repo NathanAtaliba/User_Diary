@@ -5,14 +5,16 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - MONGO_URI=mongodb://mongo:27017/mydatabase
+      - DB_URI=mongodb://127.0.0.1:27017/Users
     depends_on:
       - mongo
 
   mongo:
-    image: mongo
+    container_name: mongodb_container
+    image: mongo:latest
     ports:
       - "27017:27017"
+    restart: always
     volumes:
       - mongo-data:/data/db
 
