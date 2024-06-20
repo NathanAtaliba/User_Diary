@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { LoginPage } from './pages/LoginPage';
 import { LogedPage } from './pages/LogedPage';
 import { Toaster } from 'sonner';
@@ -12,7 +12,7 @@ ReactDOM.render(
     <Router>
       <Routes>
         <Route path="/signup" element={<SignupForm />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
         <Route path="/loged" element={<LogedPage />} />
       </Routes>
     </Router>
