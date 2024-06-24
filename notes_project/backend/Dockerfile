@@ -3,7 +3,7 @@
 FROM node:20-alpine
 
 # Define o diretório de trabalho dentro do container
-WORKDIR ./src
+WORKDIR /app
 
 # Copia os arquivos de dependências
 COPY package*.json ./
