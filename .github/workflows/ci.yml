@@ -43,8 +43,8 @@ jobs:
 
     - name: Build Docker image
       run: docker build -t myapp .
-      working-directory: notes_project  # Define o diretório onde estão o Dockerfile e o Docker Compose
+      working-directory: notes_project  
 
     - name: Run Docker Compose
       run: docker-compose up -d
-      working-directory: notes_project  # Define o diretório onde estão o Dockerfile e o Docker Compose
+      working-directory: notes_project  

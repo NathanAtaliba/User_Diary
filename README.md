@@ -7,9 +7,27 @@ Repositorio para Projeto utilizando React
 
 #  FrontEnd:
 
+## Telas:
+    
+    1 - Tela de login, onde o usuario pode colocar as suas credenciais de login ou pode ser redirecionado para criar sua conta.
+    
+    2 - Tela de cadastro, onde o usuario pode criar a sua conta com username, email e password.
+    
+    3 - Tela de notas, onde  o usuario pode adicionar uma nota, remover uma nota, editar uma nota pelo titulo e seu conteudo.
+
 #  BackEnd:
 
-## Rotas de usuario:
+## Rotas do usuario:
+    1 - Criar usuario: [ :ok: ]
+    2 - Deletar usuario: [ :ok: ]
+    3 - Procurar usuario: [ :ok: ] 
+    4 - Editar usuario: [ :ok: ]
+    
+## Rotas da nota:
+    1 - Criar nota: [ :ok: ]
+    2 - Deletar nota: [ :ok: ]
+    3 - Procurar nota: [ :ok: ]
+    4 - Editar nota: [ :ok: ]
 
 ## CI/CD
 [![CI](https://github.com/NathanAtaliba/User_Diary/actions/workflows/ci.yml/badge.svg)](https://github.com/NathanAtaliba/User_Diary/actions/workflows/ci.yml)
